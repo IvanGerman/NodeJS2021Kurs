@@ -1,8 +1,4 @@
-const Board = require("./board.model");
-
-const Boards = [];
-Boards.push( new Board(), new Board(), new Board() );
-
+const Boards = require('./board.dataBase');
 
 const getAll = async () => Boards;
 

@@ -1,7 +1,4 @@
-const User = require("./user.model");
-
-const Users = [];
-Users.push( new User(), new User(), new User() );
+const Users = require('./user.dataBase');
 
 const getAll = async () => Users;
 

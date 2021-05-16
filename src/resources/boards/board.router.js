@@ -10,15 +10,15 @@ router.route('/').get(async (req, res) => {
     .json(boards); 
 });
 
-// router.route('/:id').get(async (req, res) => {
+router.route('/:id').get(async (req, res) => {
 
-//   const { id } = req.params;
-//   const user = await usersService.getUserById(id);
+  const { id } = req.params;
+  const board = await boardsService.getBoardById(id);
 
-//   res.setHeader('content-type', 'application/json');
-//   res.status(user? 200 : 400)
-//     .json(User.toResponse(user));  
-// });
+  res.setHeader('content-type', 'application/json');
+  res.status(board? 200 : 401)
+    .json(board);  
+});
 
 // router.route('/').post( async (req,res) => {
   
