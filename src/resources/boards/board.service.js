@@ -1,4 +1,5 @@
 const boardsRepo = require('./board.memory.repository');
+const tasksService = require('../tasks/task.service');
 
 
 const getAll = () => boardsRepo.getAll();
@@ -13,5 +14,11 @@ const getBoardById = (id) => {
 
 const createNewBoard = (board) => boardsRepo.createNewBoard(board);
 
+const updateBoard = (boardId, newBoardData) => boardsRepo.updateBoard(boardId, newBoardData);// return avtomatom
 
-module.exports = { getAll, getBoardById, createNewBoard };
+const deleteBoardById = (boardId) => {
+    tasksService.deleteAllTasksByBoardId(boardId);
+    return boardsRepo.deleteBoardById(boardId);
+  };
+
+module.exports = { getAll, getBoardById, createNewBoard, updateBoard, deleteBoardById};
