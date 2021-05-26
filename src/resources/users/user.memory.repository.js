@@ -12,7 +12,7 @@ const getUserById = async (id) => Users.find( user => user.id === id );
 const createNewUser = async (user) => {
 
   Users.push(user);
-  return getUserById(user.id); // or return user;
+  return user; // or getUserById(user.id);
 };
 
 
