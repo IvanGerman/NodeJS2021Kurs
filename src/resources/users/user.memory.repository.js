@@ -1,6 +1,9 @@
 const Users = require('./user.dataBase');
 
-
+/**
+ * This function returns a list of users
+ * @returns {Promise} - Array of all users
+ */
 const getAll = async () => Users;
 
 
