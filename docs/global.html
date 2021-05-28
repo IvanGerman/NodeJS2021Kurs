@@ -104,6 +104,165 @@
     
 
     
+    <h4 class="name" id="createNewBoard"><span class="type-signature">(async) </span>createNewBoard<span class="signature">(board)</span><span class="type-signature"> &rarr; {<a href="global.html#board">board</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function creates and returns a new created board
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>board</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#board">board</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">board who should be created</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="boards_board.memory.repository.js.html">boards/board.memory.repository.js</a>, <a href="boards_board.memory.repository.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    board - returns new created board
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#board">board</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="createNewUser"><span class="type-signature">(async) </span>createNewUser<span class="signature">(user)</span><span class="type-signature"> &rarr; {<a href="global.html#user">user</a>}</span></h4>
     
 
@@ -205,7 +364,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="user.memory.repository.js.html">user.memory.repository.js</a>, <a href="user.memory.repository.js.html#line39">line 39</a>
+        <a href="users_user.memory.repository.js.html">users/user.memory.repository.js</a>, <a href="users_user.memory.repository.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -263,7 +422,169 @@
     
 
     
-    <h4 class="name" id="deleteUser"><span class="type-signature">(async) </span>deleteUser<span class="signature">(id)</span><span class="type-signature"> &rarr; {<a href="global.html#user">user</a>}</span></h4>
+    <h4 class="name" id="deleteBoardById"><span class="type-signature">(async) </span>deleteBoardById<span class="signature">(boardId)</span><span class="type-signature"> &rarr; {<a href="global.html#board">board</a>|null}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function deletes an board by his id
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>boardId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">boardId of an board</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="boards_board.memory.repository.js.html">boards/board.memory.repository.js</a>, <a href="boards_board.memory.repository.js.html#line77">line 77</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    board - returns deleted board or null if the board was not found
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#board">board</a></span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deleteUser"><span class="type-signature">(async) </span>deleteUser<span class="signature">(id)</span><span class="type-signature"> &rarr; {<a href="global.html#user">user</a>|null}</span></h4>
     
 
     
@@ -364,7 +685,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="user.memory.repository.js.html">user.memory.repository.js</a>, <a href="user.memory.repository.js.html#line70">line 70</a>
+        <a href="users_user.memory.repository.js.html">users/user.memory.repository.js</a>, <a href="users_user.memory.repository.js.html#line70">line 70</a>
     </li></ul></dd>
     
 
@@ -393,7 +714,7 @@
 
         
 <div class="param-desc">
-    user - returns deleted user
+    user - returns deleted user or null if the user was not found
 </div>
 
 
@@ -405,6 +726,119 @@
     <dd>
         
 <span class="param-type"><a href="global.html#user">user</a></span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getAll"><span class="type-signature">(async) </span>getAll<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="global.html#Boards">Boards</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function returns a list of all boards
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="boards_board.memory.repository.js.html">boards/board.memory.repository.js</a>, <a href="boards_board.memory.repository.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Boards - Array of all boards
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#Boards">Boards</a></span>
 
 
     </dd>
@@ -474,7 +908,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="user.memory.repository.js.html">user.memory.repository.js</a>, <a href="user.memory.repository.js.html#line14">line 14</a>
+        <a href="users_user.memory.repository.js.html">users/user.memory.repository.js</a>, <a href="users_user.memory.repository.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -515,6 +949,165 @@
     <dd>
         
 <span class="param-type"><a href="global.html#Users">Users</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getBoardById"><span class="type-signature">(async) </span>getBoardById<span class="signature">(id)</span><span class="type-signature"> &rarr; {<a href="global.html#board">board</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function finds and returns a board by his id
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of a board</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="boards_board.memory.repository.js.html">boards/board.memory.repository.js</a>, <a href="boards_board.memory.repository.js.html#line36">line 36</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    board - returns Object of a board
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#board">board</a></span>
 
 
     </dd>
@@ -633,7 +1226,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="user.memory.repository.js.html">user.memory.repository.js</a>, <a href="user.memory.repository.js.html#line29">line 29</a>
+        <a href="users_user.memory.repository.js.html">users/user.memory.repository.js</a>, <a href="users_user.memory.repository.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -691,7 +1284,192 @@
     
 
     
-    <h4 class="name" id="updateUser"><span class="type-signature">(async) </span>updateUser<span class="signature">(id, newUserData)</span><span class="type-signature"> &rarr; {<a href="global.html#user">user</a>}</span></h4>
+    <h4 class="name" id="updateBoard"><span class="type-signature">(async) </span>updateBoard<span class="signature">(boardId, newBoardData)</span><span class="type-signature"> &rarr; {<a href="global.html#board">board</a>|null}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function updates and returns a board
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>boardId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of a board</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newBoardData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#board">board</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">new values for boards properties</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="boards_board.memory.repository.js.html">boards/board.memory.repository.js</a>, <a href="boards_board.memory.repository.js.html#line60">line 60</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    updatedBoard - returns the updated object of a board or null if the board was notfound
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#board">board</a></span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="updateUser"><span class="type-signature">(async) </span>updateUser<span class="signature">(id, newUserData)</span><span class="type-signature"> &rarr; {<a href="global.html#user">user</a>|null}</span></h4>
     
 
     
@@ -815,7 +1593,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="user.memory.repository.js.html">user.memory.repository.js</a>, <a href="user.memory.repository.js.html#line53">line 53</a>
+        <a href="users_user.memory.repository.js.html">users/user.memory.repository.js</a>, <a href="users_user.memory.repository.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -844,7 +1622,7 @@
 
         
 <div class="param-desc">
-    user - returns the updated object of an user
+    user - returns the updated object of an user or null if the user was not found
 </div>
 
 
@@ -856,6 +1634,9 @@
     <dd>
         
 <span class="param-type"><a href="global.html#user">user</a></span>
+|
+
+<span class="param-type">null</span>
 
 
     </dd>
@@ -874,6 +1655,504 @@
         <h3 class="subsection-title">Type Definitions</h3>
 
         
+                
+<h4 class="name" id="board">board</h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of a board</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">title of a board</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>columns</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#columns">columns</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">columns of a board</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="boards_board.memory.repository.js.html">boards/board.memory.repository.js</a>, <a href="boards_board.memory.repository.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="Boards">Boards</h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;Object></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of a board</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">title of a board</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>columns</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#columns">columns</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">columns of a board</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="boards_board.memory.repository.js.html">boards/board.memory.repository.js</a>, <a href="boards_board.memory.repository.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="columns">columns</h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;Object></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">id of a column</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">title  of a column</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>order</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">order of a column</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="boards_board.memory.repository.js.html">boards/board.memory.repository.js</a>, <a href="boards_board.memory.repository.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
                 
 <h4 class="name" id="user">user</h4>
 
@@ -1023,7 +2302,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="user.memory.repository.js.html">user.memory.repository.js</a>, <a href="user.memory.repository.js.html#line18">line 18</a>
+        <a href="users_user.memory.repository.js.html">users/user.memory.repository.js</a>, <a href="users_user.memory.repository.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -1189,7 +2468,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="user.memory.repository.js.html">user.memory.repository.js</a>, <a href="user.memory.repository.js.html#line4">line 4</a>
+        <a href="users_user.memory.repository.js.html">users/user.memory.repository.js</a>, <a href="users_user.memory.repository.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -1219,13 +2498,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createNewUser">createNewUser</a></li><li><a href="global.html#deleteUser">deleteUser</a></li><li><a href="global.html#getAll">getAll</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#updateUser">updateUser</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createNewBoard">createNewBoard</a></li><li><a href="global.html#createNewUser">createNewUser</a></li><li><a href="global.html#deleteBoardById">deleteBoardById</a></li><li><a href="global.html#deleteUser">deleteUser</a></li><li><a href="global.html#getAll">getAll</a></li><li><a href="global.html#getBoardById">getBoardById</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateUser">updateUser</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri May 28 2021 01:54:34 GMT+0700 (GMT+07:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri May 28 2021 14:02:49 GMT+0700 (GMT+07:00)
 </footer>
 
 <script> prettyPrint(); </script>
