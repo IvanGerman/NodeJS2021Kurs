@@ -1,26 +1,22 @@
 const Users = require('./user.dataBase');
 
-
 /** 
-* @typedef {Array<Object>} Users
+ * @typedef user
+ * @type {Object}
  * @property {string} id - id of an user
  * @property {string} name - name of an user
  * @property {string} login - login of an user
  */
+
 /**
  * This function returns a list of users
- * @returns {Users} Users - Array of all users
+ * @returns {Array.<user>} Users - Array of all users
  */
 const getAll = async () => Users;
 
 
 
-/** 
-* @typedef {Object} user
- * @property {string} id - id of an user
- * @property {string} name - name of an user
- * @property {string} login - login of an user
- */
+
 /**
  * This function finds and returns an user by his id
  * @param {string} id - id of an user
@@ -65,7 +61,7 @@ const updateUser = async (id, newUserData) => {
 /**
  * This function deletes an user by his id
  * @param {string} id id of an user
- * @returns {user|null} user - returns deleted user or null if the user was not found
+ * @returns {user|null} user - returns deleted user
  */
 const deleteUser = async (id) => {
 

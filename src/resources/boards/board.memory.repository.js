@@ -2,32 +2,31 @@ const Boards = require('./board.dataBase');
 
 
 /** 
-* @typedef {Array<Object>} columns
+ * @typedef  column
+ * @type {Object}
  * @property {string} id - id of a column
  * @property {string} title - title  of a column
  * @property {number} order - order of a column
  */
+
 /** 
-* @typedef {Array<Object>} Boards
+ * @typedef  board
+ * @type {Object}
  * @property {string} id - id of a board
  * @property {string} title - title of a board
- * @property {columns} columns - columns of a board
+ * @property {Array.<column>} columns - columns of a board
  */
+
 /**
  * This function returns a list of all boards
- * @returns {Boards} Boards - Array of all boards
+ * @returns {Array.<board>} Boards - returns an array of all boards
  */
 const getAll = async () => Boards;
 
 
 
 
-/** 
-* @typedef {Object} board
- * @property {string} id - id of a board
- * @property {string} title - title of a board
- * @property {columns} columns - columns of a board
- */
+
 /**
  * This function finds and returns a board by his id
  * @param {string} id - id of a board
