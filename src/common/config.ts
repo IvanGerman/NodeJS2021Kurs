@@ -12,3 +12,7 @@ module.exports = {
   JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
   AUTH_MODE: process.env.AUTH_MODE === 'true'
 };
+
+
+
+export {};

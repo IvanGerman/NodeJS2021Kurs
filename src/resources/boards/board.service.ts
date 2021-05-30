@@ -22,3 +22,7 @@ const deleteBoardById = (boardId) => {
   };
 
 module.exports = { getAll, getBoardById, createNewBoard, updateBoard, deleteBoardById};
+
+
+
+export {};

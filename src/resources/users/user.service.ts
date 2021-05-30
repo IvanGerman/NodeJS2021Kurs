@@ -20,3 +20,8 @@ const deleteUser = (id) => {
 
 
 module.exports = { getAll, getUserById, createNewUser, updateUser, deleteUser };
+
+
+
+
+export {};

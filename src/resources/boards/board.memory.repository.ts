@@ -85,3 +85,8 @@ const deleteBoardById = async (boardId) => {
 
 
 module.exports = { getAll, getBoardById, createNewBoard, updateBoard, deleteBoardById };
+
+
+
+
+export {};
