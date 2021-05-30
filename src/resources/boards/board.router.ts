@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const Board = require('./board.model');
-const boardsService = require('./board.service');
+const Board = require('./board.model.ts');
+const boardsService = require('./board.service.ts');
 
 
 
