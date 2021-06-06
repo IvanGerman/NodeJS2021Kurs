@@ -1,4 +1,6 @@
-const Users = require('./user.dataBase.ts');
+import { IUser } from './user.model';
+
+const Users: Array<IUser> = require('./user.dataBase');
 
 /** 
  * @typedef user
@@ -12,7 +14,7 @@ const Users = require('./user.dataBase.ts');
  * This function returns a list of users
  * @returns {Array.<user>} Users - Array of all users
  */
-const getAll = async () => Users;
+const getAll = async (): Promise<Array<IUser>> => Users;
 
 
 
@@ -22,7 +24,7 @@ const getAll = async () => Users;
  * @param {string} id - id of an user
  * @returns {user} user - returns Object of an user
  */
-const getUserById = async (id) => Users.find( user => user.id === id );
+const getUserById = async (id: string): Promise<IUser | undefined> => Users.find( (user: IUser): boolean => user.id === id );
 
 
 
@@ -32,7 +34,7 @@ const getUserById = async (id) => Users.find( user => user.id === id );
  * @param {user} user - user who should be created
  * @returns {user} user - returns new created user
  */
-const createNewUser = async (user) => {
+const createNewUser = async (user: IUser): Promise<IUser>  => {
 
   Users.push(user);
   return user; // or getUserById(user.id);
@@ -46,13 +48,13 @@ const createNewUser = async (user) => {
  * @param {user} newUserData - new values for users properties
  * @returns {user|null} user - returns the updated object of an user or null if the user was not found
  */
-const updateUser = async (id, newUserData) => {
+const updateUser = async (id: string, newUserData: IUser): Promise<IUser | null> => {
 
-  const index = Users.findIndex(user => user.id === id);
+  const index: number = Users.findIndex( (user: IUser): boolean => user.id === id);
 
   if (index === -1) return null;
 
-  const user = {...Users[index], ...newUserData, id};
+  const user: IUser = {...Users[index], ...newUserData, id};
   Users[index] = user;
   return user;
 };
@@ -63,9 +65,9 @@ const updateUser = async (id, newUserData) => {
  * @param {string} id id of an user
  * @returns {user|null} user - returns deleted user
  */
-const deleteUser = async (id) => {
+const deleteUser = async (id: string): Promise<Array<IUser> | null> => {
 
-  const index = Users.findIndex(user => user.id === id);
+  const index: number = Users.findIndex( (user: IUser): boolean => user.id === id);
 
   if (index === -1) return null;
 

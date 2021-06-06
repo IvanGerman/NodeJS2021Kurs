@@ -1,8 +1,9 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const router = require('express').Router();
 const Board = require('./board.model');
 const boardsService = require('./board.service');
-router.route('/').get(async (req, res) => {
+router.route('/').get(async (_req, res) => {
     const boards = await boardsService.getAll();
     if (!boards) {
         return res.status(401).json({ message: 'Error, Boards not found' });

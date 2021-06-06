@@ -1,8 +1,9 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const router = require('express').Router();
 const User = require('./user.model');
 const usersService = require('./user.service');
-router.route('/').get(async (req, res) => {
+router.route('/').get(async (_req, res) => {
     const users = await usersService.getAll();
     if (!users) {
         return res.status(401).json({ message: 'Error, Users not found' });

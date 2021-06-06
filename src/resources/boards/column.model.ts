@@ -1,6 +1,19 @@
 const { v4: uuidv4 } = require('uuid');
 
-class Column {
+export interface IColumn {
+    id: string
+    title: string
+    order: number
+};
+
+class Column implements IColumn {
+
+    id: string;
+
+    title: string;
+
+    order: number;
+    
     constructor({  
         id = uuidv4(),
         title = 'COLUMN',

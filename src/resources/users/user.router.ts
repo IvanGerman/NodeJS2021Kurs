@@ -1,12 +1,14 @@
+import { Request, Response } from 'express';
+import { IUser } from './user.model';
+
 const router = require('express').Router();
-const User = require('./user.model.ts');
-const usersService = require('./user.service.ts');
+const User = require('./user.model');
+const usersService = require('./user.service');
 
 
+router.route('/').get(async (_req: Request, res: Response) => {
 
-router.route('/').get(async (req, res) => {
-
-  const users = await usersService.getAll();
+  const users: Array<IUser> = await usersService.getAll();
  
   if (!users) {
     return res.status(401).json( {message: 'Error, Users not found'} );
@@ -17,10 +19,10 @@ router.route('/').get(async (req, res) => {
 
 
 
-router.route('/:id').get(async (req, res) => {
+router.route('/:id').get(async (req: Request, res: Response) => {
 
   const { id } = req.params;
-  const user = await usersService.getUserById(id);
+  const user: IUser = await usersService.getUserById(id);
 
   if (!user) {
     return res.status(404).json( {message: 'Error, User not found'} );
@@ -31,9 +33,9 @@ router.route('/:id').get(async (req, res) => {
 
 
 
-router.route('/').post( async (req,res) => {
+router.route('/').post( async (req: Request, res: Response) => {
   
-  const user = await usersService.createNewUser(
+  const user: IUser = await usersService.createNewUser(
      new User({...req.body }));
 
   if (!user) {
@@ -45,11 +47,11 @@ router.route('/').post( async (req,res) => {
 
 
 
-router.route('/:id').put(async (req, res) => {
+router.route('/:id').put(async (req: Request, res: Response) => {
 
   const { id } = req.params;
-  const newUserData = req.body;
-  const user = await usersService.updateUser(id, newUserData);
+  const newUserData: IUser = req.body;
+  const user: IUser = await usersService.updateUser(id, newUserData);
   
 
   if (!user) {
@@ -61,10 +63,10 @@ router.route('/:id').put(async (req, res) => {
 
 
 
-router.route('/:id').delete(async (req, res) => {
+router.route('/:id').delete(async (req: Request, res: Response) => {
 
   const { id } = req.params;
-  const user = await usersService.deleteUser(id);
+  const user: IUser = await usersService.deleteUser(id);
   
   if (!user) { 
      return res.status(404).json( {message: 'Error, User could not be deleted'} );
@@ -76,8 +78,6 @@ router.route('/:id').delete(async (req, res) => {
 
 
 module.exports = router;
-
-
 
 
 export {};

@@ -1,12 +1,15 @@
+import { Request, Response } from 'express';
+import { IBoard } from './board.model';
+
 const router = require('express').Router();
-const Board = require('./board.model.ts');
-const boardsService = require('./board.service.ts');
+const Board = require('./board.model');
+const boardsService = require('./board.service');
 
 
 
-router.route('/').get(async (req, res) => {
+router.route('/').get(async (_req: Request, res: Response) => {
 
-  const boards = await boardsService.getAll();
+  const boards: Array<IBoard> = await boardsService.getAll();
 
   if (!boards) {
     return res.status(401).json( {message: 'Error, Boards not found'} );
@@ -17,10 +20,10 @@ router.route('/').get(async (req, res) => {
 
 
 
-router.route('/:id').get( async (req, res) => {
+router.route('/:id').get( async (req: Request, res: Response) => {
 
   const { id } = req.params;
-  const board = await boardsService.getBoardById(id);
+  const board: IBoard = await boardsService.getBoardById(id);
 
   if (!board) {
     return res.status(404).json( {message: 'Error, Board not found'} );
@@ -31,9 +34,9 @@ router.route('/:id').get( async (req, res) => {
 
 
 
-router.route('/').post( async (req,res) => { 
+router.route('/').post( async (req: Request, res: Response) => { 
   
-  const board = await boardsService.createNewBoard(new Board({...req.body}));
+  const board: IBoard = await boardsService.createNewBoard(new Board({...req.body}));
   
   if (!board) {
     return res.status(400).json( {message: 'Error, new Board was not created'} );
@@ -44,11 +47,11 @@ router.route('/').post( async (req,res) => {
 
 
 
-router.route('/:boardId').put( async (req, res) => {
+router.route('/:boardId').put( async (req: Request, res: Response) => {
 
   const {boardId} = req.params;
-  const newBoardData = req.body;
-  const board = await boardsService.updateBoard(boardId, newBoardData);
+  const newBoardData: IBoard = req.body;
+  const board: IBoard = await boardsService.updateBoard(boardId, newBoardData);
 
   if (!board) {
     return res.status(400).json( {message: 'Error, Board could not be updated'} );
@@ -59,10 +62,10 @@ router.route('/:boardId').put( async (req, res) => {
 
 
 
-router.route('/:boardId').delete(async (req, res) => {
+router.route('/:boardId').delete(async (req: Request, res: Response) => {
 
   const {boardId} = req.params;
-  const board = await boardsService.deleteBoardById(boardId);
+  const board: IBoard = await boardsService.deleteBoardById(boardId);
 
   if (!board) { 
     return res.status(404).json( {message: 'Error, Board could not be deleted'} );

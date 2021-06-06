@@ -1,19 +1,20 @@
-const usersRepo = require('./user.memory.repository.ts');
-const tasksService = require('../tasks/task.service.ts');
+import { IUser } from './user.model';
 
+const usersRepo = require('./user.memory.repository');
+const tasksService = require('../tasks/task.service');
 
-const getAll = () => usersRepo.getAll();
+const getAll = (): Array<IUser> => usersRepo.getAll();
 
-const getUserById = (id) => {
-    const user = usersRepo.getUserById(id);
+const getUserById = (id: string): IUser => {
+    const user: IUser = usersRepo.getUserById(id);
     return user;
 };
 
-const createNewUser = (user) => usersRepo.createNewUser(user);
+const createNewUser = (user: IUser) => usersRepo.createNewUser(user);
 
-const updateUser = (id, newUserData) => usersRepo.updateUser(id, newUserData);
+const updateUser = (id: string, newUserData: IUser) => usersRepo.updateUser(id, newUserData);
 
-const deleteUser = (id) => {
+const deleteUser = (id: string) => {
     tasksService.unassignUser(id);
     return usersRepo.deleteUser(id);
   };
