@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: tasks/task.memory.repository.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: tasks/task.memory.repository.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let Tasks = require('./task.dataBase');
+
+
+/** 
+ * @typedef task
+ * @type {Object}
+ * @property {string} id - id of a task
+ * @property {string} title - title of a task
+ * @property {number} order - order of a task
+ * @property {string} description - description of a task
+ * @property {string} userId - id of an user who is currently working on that task
+ * @property {string} boardId - id of a board this task belongs to
+ * @property {string} columnId - id of a column this task belongs to
+ */
+/**
+ * This function finds and returns tasks from certain board by his boardId
+ * @param {string} boardId - id of a board the tasks belong to
+ * @returns {Array.&lt;task>} tasks - returns all the tasks in a certain board
+ */
+const getTasksByBoardId = async (boardId) => Tasks.filter(task => task.boardId === boardId);
+
+
+
+
+/**
+ * This function finds and returns a certain task  by his boardId and taskId
+ * @param {string} boardId - id of a board the task belong to
+ * @param {string} taskId - id of the task
+ * @returns {task} task - returns a certain the task 
+ */
+const getTaskByBoardAndTaskId = async (boardId, taskId) => Tasks.find(task => task.boardId === boardId &amp;&amp; task.id === taskId);
+
+
+
+
+/**
+ * This function creates and returns a new created task
+ * @param {task} task - task which should be created
+ * @returns {task} task - returns new created task
+ */
+const createNewTask = async (task) => {
+  Tasks.push(task);
+  return task;
+};
+
+
+
+
+/**
+ * This function updates and returns a task
+ * @param {string} boardId - id of a board the task belong to
+ * @param {string} taskId - id of the task
+ * @param {task} taskData - new values for task properties
+ * @returns {task|null} updatedTask - returns the updated object of a task or null if the task was not found
+ */
+const updateTask = async (boardId, taskId, taskData) => {
+
+  const index = Tasks.findIndex(task => task.boardId === boardId &amp;&amp; task.id === taskId);
+
+  if (index === -1) return null;
+
+  const updatedTask = {...Tasks[index], ...taskData, id: taskId };
+  Tasks[index] = updatedTask;
+  return updatedTask;
+};
+
+
+
+
+/**
+ * This function deletes a certain task
+ * @param {string} boardId - id of a board the task belong to
+ * @param {string} taskId - id of the task
+ * @returns {task|null} task - returns the deleted task or null if the task was not found
+ */
+const deleteTask = async (boardId, taskId) => {
+
+  const index = Tasks.findIndex(task => task.id === taskId);
+
+  if (index === -1) return null;
+  
+  return Tasks.splice(index, 1);
+};
+
+
+
+/**
+ * This function sets a property "userId" to null by each task a deleted user was related with
+ * @param {string} id - id of the deleted user
+ * @returns {void} 
+ */
+const unassignUser = async (id) => {
+
+  Tasks.forEach((task, index) => {
+    
+    if (task.userId === id) {
+      Tasks[index].userId = null;
+    }
+  });
+};
+
+
+
+/**
+ * This function deletes all task which belonged to a deleted board
+ * @param {string} boardId - id of the deleted board
+ * @returns {void} 
+ */
+const deleteAllTasksByBoardId = async (boardId) => {
+  Tasks = Tasks.filter(task => task.boardId !== boardId);
+};
+
+
+
+module.exports = { getTasksByBoardId, getTaskByBoardAndTaskId, createNewTask, updateTask, deleteTask, unassignUser, deleteAllTasksByBoardId };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createNewBoard">createNewBoard</a></li><li><a href="global.html#createNewTask">createNewTask</a></li><li><a href="global.html#createNewUser">createNewUser</a></li><li><a href="global.html#deleteAllTasksByBoardId">deleteAllTasksByBoardId</a></li><li><a href="global.html#deleteBoardById">deleteBoardById</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#deleteUser">deleteUser</a></li><li><a href="global.html#getAll">getAll</a></li><li><a href="global.html#getBoardById">getBoardById</a></li><li><a href="global.html#getTaskByBoardAndTaskId">getTaskByBoardAndTaskId</a></li><li><a href="global.html#getTasksByBoardId">getTasksByBoardId</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#unassignUser">unassignUser</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateTask">updateTask</a></li><li><a href="global.html#updateUser">updateUser</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri May 28 2021 16:25:42 GMT+0700 (GMT+07:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
