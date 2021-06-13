@@ -23,8 +23,8 @@ npm install
 npm start
 ```
 
-After starting the app on port (4000 as default) you can open
-in your browser OpenAPI documentation by typing http://localhost:4000/doc/.
+After starting the app on port (8080 as default) you can open
+in your browser OpenAPI documentation by typing http://localhost:8080/doc/.
 For more information about OpenAPI/Swagger please visit https://swagger.io/.
 
 ## Testing
@@ -73,3 +73,9 @@ For more information, visit: https://code.visualstudio.com/docs/editor/debugging
 
 
 ## All incoming requests data are logged to the file logging.log
+## All unhandled errors are logged to the file errors.log
+
+
+### Start the application from the directory NodeJS2021Kurs using the commands  npm start or npm start2 or npm start3
+
+### To start the application using Docker ( to start both application container and PostgreSQL database container ) use the command docker-compose up
