@@ -1,0 +1,9 @@
+
+  Error from       Sun Jun 13 2021 17:53:01 GMT+0700 (GMT+07:00)
+  status code:     500
+  errorName:       TypeError
+  errorMessage:    Cannot destructure property 'id' of 'user' as it is undefined.
+  errorStack:      TypeError: Cannot destructure property 'id' of 'user' as it is undefined.
+    at Function.toResponse (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.model.js:13:17)
+    at C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.router.js:18:35
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
