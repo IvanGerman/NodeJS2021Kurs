@@ -1,9 +1,10 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const router = require('express').Router({ mergeParams: true });
 const Task = require('./task.model');
 const tasksService = require('./task.service');
-router.route('/').get(async (req, res) => {
-    const { boardId } = req.params;
+router.route('/').get(async (_req, res) => {
+    const { boardId } = _req.params;
     const tasks = await tasksService.getTasksByBoardId(boardId);
     if (!tasks) {
         return res.status(401).json({ message: 'Error, Tasks not found' });

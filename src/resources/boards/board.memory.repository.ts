@@ -1,5 +1,6 @@
-const Boards = require('./board.dataBase.ts');
+import { IBoard } from './board.model';
 
+const Boards = require('./board.dataBase');
 
 /** 
  * @typedef  column
@@ -21,7 +22,7 @@ const Boards = require('./board.dataBase.ts');
  * This function returns a list of all boards
  * @returns {Array.<board>} Boards - returns an array of all boards
  */
-const getAll = async () => Boards;
+const getAll = async (): Promise<Array<IBoard>> => Boards;
 
 
 
@@ -32,9 +33,7 @@ const getAll = async () => Boards;
  * @param {string} id - id of a board
  * @returns {board} board - returns Object of a board
  */
-const getBoardById = async (id) => Boards.find( board => board.id === id );
-
-
+const getBoardById = async (id: string): Promise<IBoard | undefined> => Boards.find( (board: IBoard): boolean => board.id === id );
 
 
 /**
@@ -42,7 +41,7 @@ const getBoardById = async (id) => Boards.find( board => board.id === id );
  * @param {board} board - board who should be created
  * @returns {board} board - returns new created board
  */
-const createNewBoard = async (board) => {
+const createNewBoard = async (board: IBoard) => {
   Boards.push(board);
   return board;
   
@@ -56,13 +55,13 @@ const createNewBoard = async (board) => {
  * @returns {board|null} updatedBoard - returns the updated object of a board or null if the board was not
  * found
  */
-const updateBoard = async (boardId, newBoardData) => {
+const updateBoard = async (boardId: string, newBoardData: IBoard) => {
 
-  const index = Boards.findIndex(board => board.id === boardId);
+  const index: number = Boards.findIndex( (board: IBoard): boolean => board.id === boardId);
 
   if (index === -1) return null;
 
-  const updatedBoard = {...Boards[index], ...newBoardData, boardId };
+  const updatedBoard: IBoard = {...Boards[index], ...newBoardData, boardId };
   Boards[index] = updatedBoard;
   return updatedBoard;
 };
@@ -73,9 +72,9 @@ const updateBoard = async (boardId, newBoardData) => {
  * @param {string} boardId  - boardId of an board
  * @returns {board|null} board - returns deleted board or null if the board was not found
  */
-const deleteBoardById = async (boardId) => {
+const deleteBoardById = async (boardId: string) => {
   
-  const index = Boards.findIndex(board => board.id === boardId);
+  const index = Boards.findIndex( (board: IBoard): boolean => board.id === boardId);
 
   if (index === -1) return null;
   

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 let Tasks = require('./task.dataBase');
 /**
  * @typedef task
@@ -16,14 +17,14 @@ let Tasks = require('./task.dataBase');
  * @param {string} boardId - id of a board the tasks belong to
  * @returns {Array.<task>} tasks - returns all the tasks in a certain board
  */
-const getTasksByBoardId = async (boardId) => Tasks.filter(task => task.boardId === boardId);
+const getTasksByBoardId = async (boardId) => Tasks.filter((task) => task.boardId === boardId);
 /**
  * This function finds and returns a certain task  by his boardId and taskId
  * @param {string} boardId - id of a board the task belong to
  * @param {string} taskId - id of the task
  * @returns {task} task - returns a certain the task
  */
-const getTaskByBoardAndTaskId = async (boardId, taskId) => Tasks.find(task => task.boardId === boardId && task.id === taskId);
+const getTaskByBoardAndTaskId = async (boardId, taskId) => Tasks.find((task) => task.boardId === boardId && task.id === taskId);
 /**
  * This function creates and returns a new created task
  * @param {task} task - task which should be created
@@ -41,7 +42,7 @@ const createNewTask = async (task) => {
  * @returns {task|null} updatedTask - returns the updated object of a task or null if the task was not found
  */
 const updateTask = async (boardId, taskId, taskData) => {
-    const index = Tasks.findIndex(task => task.boardId === boardId && task.id === taskId);
+    const index = Tasks.findIndex((task) => task.boardId === boardId && task.id === taskId);
     if (index === -1)
         return null;
     const updatedTask = { ...Tasks[index], ...taskData, id: taskId };
@@ -54,8 +55,8 @@ const updateTask = async (boardId, taskId, taskData) => {
  * @param {string} taskId - id of the task
  * @returns {task|null} task - returns the deleted task or null if the task was not found
  */
-const deleteTask = async (boardId, taskId) => {
-    const index = Tasks.findIndex(task => task.id === taskId);
+const deleteTask = async (_boardId, taskId) => {
+    const index = Tasks.findIndex((task) => task.id === taskId);
     if (index === -1)
         return null;
     return Tasks.splice(index, 1);
@@ -78,6 +79,6 @@ const unassignUser = async (id) => {
  * @returns {void}
  */
 const deleteAllTasksByBoardId = async (boardId) => {
-    Tasks = Tasks.filter(task => task.boardId !== boardId);
+    Tasks = Tasks.filter((task) => task.boardId !== boardId);
 };
 module.exports = { getTasksByBoardId, getTaskByBoardAndTaskId, createNewTask, updateTask, deleteTask, unassignUser, deleteAllTasksByBoardId };

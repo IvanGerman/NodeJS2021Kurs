@@ -1,4 +1,6 @@
-let Tasks = require('./task.dataBase.ts');
+import { ITask } from './task.model';
+
+let Tasks = require('./task.dataBase');
 
 
 /** 
@@ -17,7 +19,7 @@ let Tasks = require('./task.dataBase.ts');
  * @param {string} boardId - id of a board the tasks belong to
  * @returns {Array.<task>} tasks - returns all the tasks in a certain board
  */
-const getTasksByBoardId = async (boardId) => Tasks.filter(task => task.boardId === boardId);
+const getTasksByBoardId = async (boardId: string): Promise<Array<ITask>> => Tasks.filter( (task: ITask) => task.boardId === boardId);
 
 
 
@@ -28,7 +30,7 @@ const getTasksByBoardId = async (boardId) => Tasks.filter(task => task.boardId =
  * @param {string} taskId - id of the task
  * @returns {task} task - returns a certain the task 
  */
-const getTaskByBoardAndTaskId = async (boardId, taskId) => Tasks.find(task => task.boardId === boardId && task.id === taskId);
+const getTaskByBoardAndTaskId = async (boardId: string, taskId: string) => Tasks.find( (task: ITask): boolean => task.boardId === boardId && task.id === taskId);
 
 
 
@@ -38,7 +40,7 @@ const getTaskByBoardAndTaskId = async (boardId, taskId) => Tasks.find(task => ta
  * @param {task} task - task which should be created
  * @returns {task} task - returns new created task
  */
-const createNewTask = async (task) => {
+const createNewTask = async (task: ITask) => {
   Tasks.push(task);
   return task;
 };
@@ -53,13 +55,13 @@ const createNewTask = async (task) => {
  * @param {task} taskData - new values for task properties
  * @returns {task|null} updatedTask - returns the updated object of a task or null if the task was not found
  */
-const updateTask = async (boardId, taskId, taskData) => {
+const updateTask = async (boardId: string, taskId: string, taskData: ITask) => {
 
-  const index = Tasks.findIndex(task => task.boardId === boardId && task.id === taskId);
+  const index: number = Tasks.findIndex( (task: ITask): boolean => task.boardId === boardId && task.id === taskId);
 
   if (index === -1) return null;
 
-  const updatedTask = {...Tasks[index], ...taskData, id: taskId };
+  const updatedTask: ITask = {...Tasks[index], ...taskData, id: taskId };
   Tasks[index] = updatedTask;
   return updatedTask;
 };
@@ -73,9 +75,9 @@ const updateTask = async (boardId, taskId, taskData) => {
  * @param {string} taskId - id of the task
  * @returns {task|null} task - returns the deleted task or null if the task was not found
  */
-const deleteTask = async (boardId, taskId) => {
+const deleteTask = async (_boardId: string, taskId: string) => {
 
-  const index = Tasks.findIndex(task => task.id === taskId);
+  const index: number = Tasks.findIndex( (task: ITask): boolean => task.id === taskId);
 
   if (index === -1) return null;
   
@@ -89,9 +91,9 @@ const deleteTask = async (boardId, taskId) => {
  * @param {string} id - id of the deleted user
  * @returns {void} 
  */
-const unassignUser = async (id) => {
+const unassignUser = async (id: string) => {
 
-  Tasks.forEach((task, index) => {
+  Tasks.forEach((task: ITask, index: number) => {
     
     if (task.userId === id) {
       Tasks[index].userId = null;
@@ -106,8 +108,8 @@ const unassignUser = async (id) => {
  * @param {string} boardId - id of the deleted board
  * @returns {void} 
  */
-const deleteAllTasksByBoardId = async (boardId) => {
-  Tasks = Tasks.filter(task => task.boardId !== boardId);
+const deleteAllTasksByBoardId = async (boardId: string) => {
+  Tasks = Tasks.filter( (task: ITask): boolean => task.boardId !== boardId);
 };
 
 

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const boardsRepo = require('./board.memory.repository');
 const tasksService = require('../tasks/task.service');
 const getAll = () => boardsRepo.getAll();

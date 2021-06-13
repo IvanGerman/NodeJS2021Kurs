@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const Boards = require('./board.dataBase');
 /**
  * @typedef  column
@@ -24,7 +25,7 @@ const getAll = async () => Boards;
  * @param {string} id - id of a board
  * @returns {board} board - returns Object of a board
  */
-const getBoardById = async (id) => Boards.find(board => board.id === id);
+const getBoardById = async (id) => Boards.find((board) => board.id === id);
 /**
  * This function creates and returns a new created board
  * @param {board} board - board who should be created
@@ -42,7 +43,7 @@ const createNewBoard = async (board) => {
  * found
  */
 const updateBoard = async (boardId, newBoardData) => {
-    const index = Boards.findIndex(board => board.id === boardId);
+    const index = Boards.findIndex((board) => board.id === boardId);
     if (index === -1)
         return null;
     const updatedBoard = { ...Boards[index], ...newBoardData, boardId };
@@ -55,7 +56,7 @@ const updateBoard = async (boardId, newBoardData) => {
  * @returns {board|null} board - returns deleted board or null if the board was not found
  */
 const deleteBoardById = async (boardId) => {
-    const index = Boards.findIndex(board => board.id === boardId);
+    const index = Boards.findIndex((board) => board.id === boardId);
     if (index === -1)
         return null;
     return Boards.splice(index, 1);

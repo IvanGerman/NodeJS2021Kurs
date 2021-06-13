@@ -1,22 +1,24 @@
-const boardsRepo = require('./board.memory.repository.ts');
-const tasksService = require('../tasks/task.service.ts');
+import { IBoard } from './board.model';
+
+const boardsRepo = require('./board.memory.repository');
+const tasksService = require('../tasks/task.service');
 
 
-const getAll = () => boardsRepo.getAll();
+const getAll = (): Array<IBoard> => boardsRepo.getAll();
 
-const getBoardById = (id) => {
-    const board = boardsRepo.getBoardById(id);
+const getBoardById = (id: string): IBoard => {
+    const board: IBoard = boardsRepo.getBoardById(id);
     if (!board) {
         throw new Error('Board not found');
     };
     return board;
 };
 
-const createNewBoard = (board) => boardsRepo.createNewBoard(board);
+const createNewBoard = (board: IBoard) => boardsRepo.createNewBoard(board);
 
-const updateBoard = (boardId, newBoardData) => boardsRepo.updateBoard(boardId, newBoardData);// return avtomatom
+const updateBoard = (boardId: string, newBoardData: IBoard) => boardsRepo.updateBoard(boardId, newBoardData);// return avtomatom
 
-const deleteBoardById = (boardId) => {
+const deleteBoardById = (boardId: string) => {
     tasksService.deleteAllTasksByBoardId(boardId);
     return boardsRepo.deleteBoardById(boardId);
   };

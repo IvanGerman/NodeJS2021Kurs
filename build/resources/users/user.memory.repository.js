@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const Users = require('./user.dataBase');
 /**
  * @typedef user
@@ -17,7 +18,7 @@ const getAll = async () => Users;
  * @param {string} id - id of an user
  * @returns {user} user - returns Object of an user
  */
-const getUserById = async (id) => Users.find(user => user.id === id);
+const getUserById = async (id) => Users.find((user) => user.id === id);
 /**
  * This function creates and returns a new created user
  * @param {user} user - user who should be created
@@ -34,7 +35,7 @@ const createNewUser = async (user) => {
  * @returns {user|null} user - returns the updated object of an user or null if the user was not found
  */
 const updateUser = async (id, newUserData) => {
-    const index = Users.findIndex(user => user.id === id);
+    const index = Users.findIndex((user) => user.id === id);
     if (index === -1)
         return null;
     const user = { ...Users[index], ...newUserData, id };
@@ -47,7 +48,7 @@ const updateUser = async (id, newUserData) => {
  * @returns {user|null} user - returns deleted user
  */
 const deleteUser = async (id) => {
-    const index = Users.findIndex(user => user.id === id);
+    const index = Users.findIndex((user) => user.id === id);
     if (index === -1)
         return null;
     return Users.splice(index, 1);

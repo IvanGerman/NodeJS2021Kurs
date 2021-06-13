@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const tasksRepo = require('./task.memory.repository');
 const getTasksByBoardId = (boardId) => tasksRepo.getTasksByBoardId(boardId);
 const getTaskByBoardAndTaskId = (boardId, taskId) => {
