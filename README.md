@@ -78,4 +78,9 @@ For more information, visit: https://code.visualstudio.com/docs/editor/debugging
 
 ### Start the application from the directory NodeJS2021Kurs using the commands  npm start or npm start2 or npm start3
 
-### To start the application using Docker ( to start both application container and PostgreSQL database container ) use the command docker-compose up
+### To start the application from the directory NodeJS2021Kurs using Docker:
+
+  To start both express application container and PostgreSQL database container use the command "docker-compose up"
+
+  To start just the express application container use the commands "docker build . -t express-app-image" and
+  "docker run -p 8080:8080 express-app-image"
