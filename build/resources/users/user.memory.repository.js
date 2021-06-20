@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Users = require('./user.dataBase');
+//import { IUser } from './user.model';
+const typeorm_1 = require("typeorm");
+const User_1 = require("../../entities/User");
+//const Users: Array<IUser> = require('./user.dataBase');
 /**
  * @typedef user
  * @type {Object}
@@ -12,21 +15,32 @@ const Users = require('./user.dataBase');
  * This function returns a list of users
  * @returns {Array.<user>} Users - Array of all users
  */
-const getAll = async () => Users;
+const getAll = async () => {
+    const userRepository = typeorm_1.getRepository(User_1.User);
+    return userRepository.find({ where: {} });
+};
 /**
  * This function finds and returns an user by his id
  * @param {string} id - id of an user
  * @returns {user} user - returns Object of an user
  */
-const getUserById = async (id) => Users.find((user) => user.id === id);
+const getUserById = async (id) => {
+    const userRepository = typeorm_1.getRepository(User_1.User);
+    const res = await userRepository.findOne(id);
+    if (res === undefined)
+        return undefined;
+    return res;
+};
 /**
  * This function creates and returns a new created user
  * @param {user} user - user who should be created
- * @returns {user} user - returns new created user
+ * @returns {user} user - returns Promise of a new created user
  */
-const createNewUser = async (user) => {
-    Users.push(user);
-    return user; // or getUserById(user.id);
+const createNewUser = async (dto) => {
+    const userRepository = typeorm_1.getRepository(User_1.User);
+    const newUser = userRepository.create(dto);
+    const savedUser = userRepository.save(newUser);
+    return savedUser;
 };
 /**
  * This function updates and returns an user
@@ -34,13 +48,13 @@ const createNewUser = async (user) => {
  * @param {user} newUserData - new values for users properties
  * @returns {user|null} user - returns the updated object of an user or null if the user was not found
  */
-const updateUser = async (id, newUserData) => {
-    const index = Users.findIndex((user) => user.id === id);
-    if (index === -1)
+const updateUser = async (id, dto) => {
+    const userRepository = typeorm_1.getRepository(User_1.User);
+    const res = await userRepository.findOne(id);
+    if (res === undefined)
         return null;
-    const user = { ...Users[index], ...newUserData, id };
-    Users[index] = user;
-    return user;
+    const updateRes = await userRepository.update(id, dto);
+    return updateRes.raw;
 };
 /**
  * This function deletes an user by his id
@@ -48,9 +62,13 @@ const updateUser = async (id, newUserData) => {
  * @returns {user|null} user - returns deleted user
  */
 const deleteUser = async (id) => {
-    const index = Users.findIndex((user) => user.id === id);
-    if (index === -1)
+    const userRepository = typeorm_1.getRepository(User_1.User);
+    const res = await userRepository.findOne(id);
+    const deletionRes = await userRepository.delete(id);
+    if (res === undefined)
         return null;
-    return Users.splice(index, 1);
+    if (deletionRes.affected)
+        return res;
+    return null;
 };
 module.exports = { getAll, getUserById, createNewUser, updateUser, deleteUser };

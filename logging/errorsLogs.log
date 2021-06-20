@@ -1,0 +1,126 @@
+
+  Error from       Sun Jun 20 2021 16:01:54 GMT+0700 (GMT+07:00)
+  status code:     500
+  errorName:       RepositoryNotFoundError
+  errorMessage:    No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+  errorStack:      RepositoryNotFoundError: No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+    at new RepositoryNotFoundError (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\error\RepositoryNotFoundError.js:12:28)
+    at EntityManager.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\entity-manager\EntityManager.js:650:19)
+    at Connection.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\connection\Connection.js:368:29)
+    at Object.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\index.js:293:55)
+    at Object.getAll (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.memory.repository.js:19:38)
+    at Object.getAll (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.service.js:6:35)
+    at C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.router.js:8:42
+    at Layer.handle [as handle_request] (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:112:3)
+
+  Error from       Sun Jun 20 2021 16:01:55 GMT+0700 (GMT+07:00)
+  status code:     500
+  errorName:       RepositoryNotFoundError
+  errorMessage:    No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+  errorStack:      RepositoryNotFoundError: No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+    at new RepositoryNotFoundError (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\error\RepositoryNotFoundError.js:12:28)
+    at EntityManager.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\entity-manager\EntityManager.js:650:19)
+    at Connection.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\connection\Connection.js:368:29)
+    at Object.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\index.js:293:55)
+    at Object.createNewUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.memory.repository.js:40:38)
+    at Object.createNewUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.service.js:18:37)
+    at C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.router.js:29:41
+    at Layer.handle [as handle_request] (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:112:3)
+
+  Error from       Sun Jun 20 2021 16:01:55 GMT+0700 (GMT+07:00)
+  status code:     500
+  errorName:       RepositoryNotFoundError
+  errorMessage:    No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+  errorStack:      RepositoryNotFoundError: No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+    at new RepositoryNotFoundError (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\error\RepositoryNotFoundError.js:12:28)
+    at EntityManager.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\entity-manager\EntityManager.js:650:19)
+    at Connection.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\connection\Connection.js:368:29)
+    at Object.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\index.js:293:55)
+    at Object.createNewUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.memory.repository.js:40:38)
+    at Object.createNewUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.service.js:18:37)
+    at C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.router.js:29:41
+    at Layer.handle [as handle_request] (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:112:3)
+
+  Error from       Sun Jun 20 2021 16:01:55 GMT+0700 (GMT+07:00)
+  status code:     500
+  errorName:       RepositoryNotFoundError
+  errorMessage:    No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+  errorStack:      RepositoryNotFoundError: No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+    at new RepositoryNotFoundError (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\error\RepositoryNotFoundError.js:12:28)
+    at EntityManager.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\entity-manager\EntityManager.js:650:19)
+    at Connection.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\connection\Connection.js:368:29)
+    at Object.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\index.js:293:55)
+    at Object.createNewUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.memory.repository.js:40:38)
+    at Object.createNewUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.service.js:18:37)
+    at C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.router.js:29:41
+    at Layer.handle [as handle_request] (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:112:3)
+
+  Error from       Sun Jun 20 2021 16:01:55 GMT+0700 (GMT+07:00)
+  status code:     500
+  errorName:       RepositoryNotFoundError
+  errorMessage:    No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+  errorStack:      RepositoryNotFoundError: No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+    at new RepositoryNotFoundError (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\error\RepositoryNotFoundError.js:12:28)
+    at EntityManager.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\entity-manager\EntityManager.js:650:19)
+    at Connection.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\connection\Connection.js:368:29)
+    at Object.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\index.js:293:55)
+    at Object.updateUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.memory.repository.js:52:38)
+    at Object.updateUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.service.js:24:41)
+    at C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.router.js:40:41
+    at Layer.handle [as handle_request] (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:112:3)
+
+  Error from       Sun Jun 20 2021 16:01:55 GMT+0700 (GMT+07:00)
+  status code:     500
+  errorName:       RepositoryNotFoundError
+  errorMessage:    No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+  errorStack:      RepositoryNotFoundError: No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+    at new RepositoryNotFoundError (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\error\RepositoryNotFoundError.js:12:28)
+    at EntityManager.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\entity-manager\EntityManager.js:650:19)
+    at Connection.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\connection\Connection.js:368:29)
+    at Object.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\index.js:293:55)
+    at Object.createNewUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.memory.repository.js:40:38)
+    at Object.createNewUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.service.js:18:37)
+    at C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.router.js:29:41
+    at Layer.handle [as handle_request] (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:112:3)
+
+  Error from       Sun Jun 20 2021 16:01:55 GMT+0700 (GMT+07:00)
+  status code:     500
+  errorName:       RepositoryNotFoundError
+  errorMessage:    No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+  errorStack:      RepositoryNotFoundError: No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+    at new RepositoryNotFoundError (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\error\RepositoryNotFoundError.js:12:28)
+    at EntityManager.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\entity-manager\EntityManager.js:650:19)
+    at Connection.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\connection\Connection.js:368:29)
+    at Object.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\index.js:293:55)
+    at Object.deleteUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.memory.repository.js:65:38)
+    at Object.deleteUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.service.js:31:41)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.router.js:51:22
+
+  Error from       Sun Jun 20 2021 16:01:55 GMT+0700 (GMT+07:00)
+  status code:     500
+  errorName:       RepositoryNotFoundError
+  errorMessage:    No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+  errorStack:      RepositoryNotFoundError: No repository for "User" was found. Looks like this entity is not registered in current "default" connection?
+    at new RepositoryNotFoundError (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\error\RepositoryNotFoundError.js:12:28)
+    at EntityManager.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\entity-manager\EntityManager.js:650:19)
+    at Connection.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\connection\Connection.js:368:29)
+    at Object.getRepository (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\typeorm\index.js:293:55)
+    at Object.createNewUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.memory.repository.js:40:38)
+    at Object.createNewUser (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.service.js:18:37)
+    at C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\build\resources\users\user.router.js:29:41
+    at Layer.handle [as handle_request] (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\AlHe\Desktop\Task6-Docker-basics\NodeJS2021Kurs\node_modules\express\lib\router\route.js:112:3)

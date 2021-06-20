@@ -1,28 +1,40 @@
 import { IUser } from './user.model';
+import { UserDTO } from './user.model';
 
 const usersRepo = require('./user.memory.repository');
 const tasksService = require('../tasks/task.service');
 
-const getAll = (): Array<IUser> => usersRepo.getAll();
+const getAll = async(): Promise<Array<IUser>> => {
+  const users: Array<IUser> = await usersRepo.getAll();
+  if (users === undefined) throw new Error('Users not found');
+  return users;
+};
 
-const getUserById = (id: string): IUser => {
-  const user: IUser = usersRepo.getUserById(id);
-  if (!user) throw new Error('User not found');
+const getUserById = async(id: string): Promise<IUser> => {
+  const user: IUser = await usersRepo.getUserById(id);
+  if (user === undefined) throw new Error('User not found');
   return user;
 };
-// const getUserById = (id: string): IUser => {
-//     const user: IUser = usersRepo.getUserById(id);
-//     return user;
-// };
 
-const createNewUser = (user: IUser) => usersRepo.createNewUser(user);
+const createNewUser = async(dto: UserDTO): Promise<IUser> => {
+  const newUser: IUser = await usersRepo.createNewUser(dto);
+  if (newUser === undefined) throw new Error('User was not created');
+  return newUser;
+};
 
-const updateUser = (id: string, newUserData: IUser) => usersRepo.updateUser(id, newUserData);
+const updateUser = async(id: string, dto: UserDTO): Promise<IUser> => {
+  const updatedUser: IUser = await usersRepo.updateUser(id, dto);
+  if (updatedUser === null) throw new Error('User was not updated');
+  return updatedUser;
+};
 
-const deleteUser = (id: string) => {
-    tasksService.unassignUser(id);
-    return usersRepo.deleteUser(id);
-  };
+const deleteUser = async(id: string): Promise<IUser> => {
+    await tasksService.unassignUser(id);
+    const deletedUser: IUser = await usersRepo.deleteUser(id);
+    if (deletedUser === null) throw new Error('User was not deleted');
+    return deletedUser;
+};
+
 
 
 module.exports = { getAll, getUserById, createNewUser, updateUser, deleteUser };

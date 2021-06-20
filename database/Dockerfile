@@ -1,1 +1,2 @@
-FROM postgres:latest
+FROM postgres:13.3
+
