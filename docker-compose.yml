@@ -2,21 +2,20 @@ version: '3'
 services: 
     express-app-image:
         build: .
-        command: npm run start
         volumes: 
-            - ./src:/usr/app/src
-            - /usr/app/node_modules
+            - ./src:/usr/src/app/src
+            - /usr/src/app/node_modules
         ports: 
             - ${PORT}:${PORT}
         depends_on: 
-            - postgres-image
+            - postgresapp
         environment: 
               PORT: ${PORT}
         restart: on-failure
         networks:
             - my-network
-    postgres-image:
-        image: postgres-image
+    postgresapp:
+        image: postgresapp
         build: ./database/
         ports: 
             - ${POSTGRES_PORT}:${POSTGRES_PORT}
