@@ -6,9 +6,14 @@ const tasksService = require('../tasks/task.service');
 const getAll = (): Array<IUser> => usersRepo.getAll();
 
 const getUserById = (id: string): IUser => {
-    const user: IUser = usersRepo.getUserById(id);
-    return user;
+  const user: IUser = usersRepo.getUserById(id);
+  if (!user) throw new Error('User not found');
+  return user;
 };
+// const getUserById = (id: string): IUser => {
+//     const user: IUser = usersRepo.getUserById(id);
+//     return user;
+// };
 
 const createNewUser = (user: IUser) => usersRepo.createNewUser(user);
 

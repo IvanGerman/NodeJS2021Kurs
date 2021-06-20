@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { IUser } from './user.model';
 
 const router = require('express').Router();
@@ -19,16 +19,25 @@ router.route('/').get(async (_req: Request, res: Response) => {
 
 
 
-router.route('/:id').get(async (req: Request, res: Response) => {
+router.route('/:id').get(async (req: Request, res: Response, next: NextFunction) => {
 
   const { id } = req.params;
-  const user: IUser = await usersService.getUserById(id);
 
-  if (!user) {
-    return res.status(404).json( {message: 'Error, User not found'} );
-  };
+  try {
+    const user: IUser = await usersService.getUserById(id);
+    res.status(200).json(User.toResponse(user));
+  } catch (err) { 
   
-  return res.status(200).json(User.toResponse(user));
+    next(err);
+  };
+
+  // const user: IUser = await usersService.getUserById(id);
+
+  // if (!user) {
+  //   return res.status(404).json( {message: 'Error, User not found'} );
+  // };
+  
+  // return res.status(200).json(User.toResponse(user));
 });
 
 
