@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tryDBConnect = void 0;
-const ormconfig_1 = require("../common/ormconfig");
+require("reflect-metadata");
 const typeorm_1 = require("typeorm");
+const ormconfig_1 = require("../common/ormconfig");
 const connectToDB = async () => {
     let connection;
     try {

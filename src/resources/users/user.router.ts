@@ -64,7 +64,8 @@ router.route('/:id').delete(async (req: Request, res: Response, next: NextFuncti
   
   try {
     const user: IUser = await usersService.deleteUser(id);  
-    res.status(204).json(`User ${user} successfully deleted`);
+    
+    res.status(204).json(User.toResponse(user));
   } catch (err) { 
     next(err);
   }; 

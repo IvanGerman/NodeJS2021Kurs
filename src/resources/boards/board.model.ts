@@ -4,11 +4,13 @@ const { v4: uuidv4 } = require('uuid');
 const Column = require('./column.model');
 
 export interface IBoard {
-  id: string;
-  title: string;
+  id: string,
+  title: string,
   columns: Array<IColumn>
 };
 
+
+export type BoardDTO = Omit<IBoard, 'id'>;
 
 
 class Board implements IBoard {

@@ -1,19 +1,19 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-//import {v4 as uuid} from 'uuid';
+// import {v4 as uuid} from 'uuid';
 
-@Entity({name: 'user'})
+@Entity({name: 'users'})
 export class User {
 
-    @PrimaryGeneratedColumn('increment')
-    id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
-    @Column('varchar', {length: 25})
+    @Column('varchar', { length: 64, default: 'USER1' })
     name: string = '';
 
-    @Column('varchar', {length: 25})
+    @Column('varchar', { length: 64, default: 'user1' })
     login: string = '';
 
-    @Column('varchar', {nullable: true})
+    @Column('varchar', { length: 64, default: 'password123', select: false })
     password: string;
 }
 

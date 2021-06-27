@@ -1,6 +1,7 @@
+import { tryDBConnect } from './helpers/db';
+
 const { PORT }  = require('./common/config');
 const app = require('./app');
-import { tryDBConnect } from './helpers/db';
 
 
 tryDBConnect( () => {

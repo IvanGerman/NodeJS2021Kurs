@@ -1,9 +1,9 @@
-//import { IUser } from './user.model';
+// import { IUser } from './user.model';
 import { getRepository } from 'typeorm';
 import { User } from '../../entities/User';  
 import { UserDTO } from './user.model';
 
-//const Users: Array<IUser> = require('./user.dataBase');
+// const Users: Array<IUser> = require('./user.dataBase');
 
 /** 
  * @typedef user
@@ -19,7 +19,7 @@ import { UserDTO } from './user.model';
  */
 const getAll = async (): Promise<Array<User> | undefined> => {
   const userRepository = getRepository(User);
-  return userRepository.find({where: {}}) ;
+  return userRepository.find() ;
 };
 
 
@@ -62,8 +62,10 @@ const updateUser = async (id: string, dto: UserDTO): Promise<User | null> => {
   const userRepository = getRepository(User);
   const res = await userRepository.findOne(id);
   if (res === undefined) return null;
-  const updateRes = await userRepository.update(id, dto);
-  return updateRes.raw;
+  await userRepository.update(id, dto);
+  const updatedUser = await userRepository.findOne(id);
+  // @ts-ignore
+  return updatedUser;
 };
 
 
@@ -74,12 +76,10 @@ const updateUser = async (id: string, dto: UserDTO): Promise<User | null> => {
  */
 const deleteUser = async (id: string): Promise<User | null> => {
   const userRepository = getRepository(User);
-  const res = await userRepository.findOne(id);
-  const deletionRes = await userRepository.delete(id);
-  
+  const res = await userRepository.findOne(id); 
   if (res === undefined) return null;
-  if (deletionRes.affected) return res;
-  return null;
+  await userRepository.delete(id);
+  return res;
 };
 
 

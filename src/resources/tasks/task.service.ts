@@ -1,30 +1,58 @@
-import { ITask } from './task.model';
+import { ITask, TaskDTO } from './task.model';
 
 const tasksRepo = require('./task.memory.repository');
 
 
-const getTasksByBoardId = (boardId: string): Array<ITask> => tasksRepo.getTasksByBoardId(boardId);
+const getTasksByBoardId = async (boardId: string): Promise<Array<ITask>> => {
+  
+  const tasks: Array<ITask> = await tasksRepo.getTasksByBoardId(boardId);
+  if (tasks === undefined) throw new Error('Tasks not found');
+  return tasks;
+};
 
-const getTaskByBoardAndTaskId = (boardId: string, taskId: string): ITask => {
-    const task: ITask = tasksRepo.getTaskByBoardAndTaskId(boardId, taskId);
-    if (!task) {
-        throw new Error('Task not found');
-    };
+
+
+const getTaskByBoardAndTaskId = async(boardId: string, taskId: string): Promise<ITask> => {
+    const task: ITask = await tasksRepo.getTaskByBoardAndTaskId(boardId, taskId);
+    if (task === undefined) throw new Error('Task not found');
     return task;
 };
 
-const createNewTask = (task: ITask) => tasksRepo.createNewTask(task);
 
-const updateTask = (boardId: string, taskId: string, newTaskData: ITask) => tasksRepo.updateTask(boardId, taskId, newTaskData);
 
-const deleteTask = (boardId: string, taskId: string) => tasksRepo.deleteTask(boardId, taskId);// return avtomatom
+const createNewTask = async(task: ITask): Promise<ITask> => {
+  const newTask: ITask = await tasksRepo.createNewTask(task);
+  if (newTask === undefined) throw new Error('Task was not created');
+  return newTask;
+};
+
+
+
+const updateTask = async(boardId: string, taskId: string, newTaskData: TaskDTO): Promise<ITask> => {
+  
+  const updatingTask: ITask = await tasksRepo.updateTask(boardId, taskId, newTaskData);
+  if (updatingTask === null) throw new Error('Task was not updated');
+  return updatingTask;
+};
+
+
+
+const deleteTask = async(boardId: string, taskId: string): Promise<ITask> => {
+  
+  const deletingTask: ITask = await tasksRepo.deleteTask(boardId, taskId);
+  if (deletingTask === null) throw new Error('Task was not deleted');
+  return deletingTask;
+};
+
+
 
 const unassignUser = async(id: string): Promise<void> => {
   await tasksRepo.unassignUser(id);
 };
 
-const deleteAllTasksByBoardId = (boardId: string) => tasksRepo.deleteAllTasksByBoardId(boardId);
-
+const deleteAllTasksByBoardId = (id: string) => {  
+  tasksRepo.deleteAllTasksByBoardId(id);
+};
 
 
 

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Boards = require('./board.dataBase');
+const typeorm_1 = require("typeorm");
+const Board_1 = require("../../entities/Board");
 /**
  * @typedef  column
  * @type {Object}
@@ -19,21 +20,33 @@ const Boards = require('./board.dataBase');
  * This function returns a list of all boards
  * @returns {Array.<board>} Boards - returns an array of all boards
  */
-const getAll = async () => Boards;
+const getAll = async () => {
+    const boardRepository = typeorm_1.getRepository(Board_1.BoardEntity);
+    return boardRepository.find();
+};
 /**
  * This function finds and returns a board by his id
  * @param {string} id - id of a board
  * @returns {board} board - returns Object of a board
  */
-const getBoardById = async (id) => Boards.find((board) => board.id === id);
+const getBoardById = async (id) => {
+    const boardRepository = typeorm_1.getRepository(Board_1.BoardEntity);
+    const res = await boardRepository.findOne(id);
+    if (res === undefined)
+        return undefined;
+    // @ts-ignore
+    return res;
+};
 /**
  * This function creates and returns a new created board
  * @param {board} board - board who should be created
  * @returns {board} board - returns new created board
  */
-const createNewBoard = async (board) => {
-    Boards.push(board);
-    return board;
+const createNewBoard = async (dto) => {
+    const boardRepository = typeorm_1.getRepository(Board_1.BoardEntity);
+    const newBoard = boardRepository.create(dto);
+    const savedBoard = boardRepository.save(newBoard);
+    return savedBoard;
 };
 /**
  * This function updates and returns a board
@@ -42,12 +55,15 @@ const createNewBoard = async (board) => {
  * @returns {board|null} updatedBoard - returns the updated object of a board or null if the board was not
  * found
  */
-const updateBoard = async (boardId, newBoardData) => {
-    const index = Boards.findIndex((board) => board.id === boardId);
-    if (index === -1)
+const updateBoard = async (id, dto) => {
+    const boardRepository = typeorm_1.getRepository(Board_1.BoardEntity);
+    const updatingBoard = await boardRepository.findOne(id);
+    if (!updatingBoard) {
         return null;
-    const updatedBoard = { ...Boards[index], ...newBoardData, boardId };
-    Boards[index] = updatedBoard;
+    }
+    ;
+    boardRepository.merge(updatingBoard, dto);
+    const updatedBoard = await typeorm_1.getRepository(Board_1.BoardEntity).save(updatingBoard);
     return updatedBoard;
 };
 /**
@@ -55,10 +71,13 @@ const updateBoard = async (boardId, newBoardData) => {
  * @param {string} boardId  - boardId of an board
  * @returns {board|null} board - returns deleted board or null if the board was not found
  */
-const deleteBoardById = async (boardId) => {
-    const index = Boards.findIndex((board) => board.id === boardId);
-    if (index === -1)
+const deleteBoardById = async (id) => {
+    // all boards tasks are deleted together with the board automatically
+    const boardRepository = typeorm_1.getRepository(Board_1.BoardEntity);
+    const deletingBoard = await boardRepository.findOne(id);
+    if (deletingBoard === undefined)
         return null;
-    return Boards.splice(index, 1);
+    await boardRepository.remove(deletingBoard);
+    return deletingBoard;
 };
 module.exports = { getAll, getBoardById, createNewBoard, updateBoard, deleteBoardById };
