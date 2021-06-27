@@ -95,7 +95,6 @@ const unassignUser = async (id) => {
  * @returns {void}
  */
 const deleteAllTasksByBoardId = async (id) => {
-    console.log('id: ', id);
     const taskRepository = typeorm_1.getRepository(Task_1.TaskEntity);
     const allTasks = await taskRepository.find({ where: { boardId: id } });
     await taskRepository.remove(allTasks);

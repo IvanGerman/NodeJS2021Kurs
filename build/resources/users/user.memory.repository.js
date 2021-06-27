@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // import { IUser } from './user.model';
 const typeorm_1 = require("typeorm");
 const User_1 = require("../../entities/User");
+const bcrypt = require('bcrypt');
 // const Users: Array<IUser> = require('./user.dataBase');
 /**
  * @typedef user
@@ -37,6 +38,8 @@ const getUserById = async (id) => {
  * @returns {user} user - returns Promise of a new created user
  */
 const createNewUser = async (dto) => {
+    const passwordHash = bcrypt.hashSync(dto.password, 10);
+    dto.password = passwordHash;
     const userRepository = typeorm_1.getRepository(User_1.User);
     const newUser = userRepository.create(dto);
     const savedUser = userRepository.save(newUser);

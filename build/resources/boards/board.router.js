@@ -47,9 +47,7 @@ router.route('/:boardId').put(async (req, res, next) => {
 });
 router.route('/:boardId').delete(async (req, res, next) => {
     const { boardId } = req.params;
-    console.log('id-brouterrrrr: ', boardId);
     try {
-        console.log('id-brouter: ', boardId);
         const board = await boardsService.deleteBoardById(boardId);
         res.status(204).json(board);
     }

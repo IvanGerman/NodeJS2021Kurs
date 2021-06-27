@@ -35,7 +35,6 @@ const unassignUser = async (id) => {
     await tasksRepo.unassignUser(id);
 };
 const deleteAllTasksByBoardId = (id) => {
-    console.log('id1: ', id);
     tasksRepo.deleteAllTasksByBoardId(id);
 };
 module.exports = { getTasksByBoardId, getTaskByBoardAndTaskId, createNewTask, updateTask, deleteTask, unassignUser, deleteAllTasksByBoardId };

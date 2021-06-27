@@ -31,7 +31,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "login", void 0);
 __decorate([
-    typeorm_1.Column('varchar', { length: 64, default: 'password123', select: false }),
+    typeorm_1.Column('varchar', { length: 128, default: 'password123' }),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 User = __decorate([
