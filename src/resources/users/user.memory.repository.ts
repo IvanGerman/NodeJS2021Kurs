@@ -2,6 +2,7 @@
 import { getRepository } from 'typeorm';
 import { User } from '../../entities/User';  
 import { UserDTO } from './user.model';
+
 const bcrypt = require('bcrypt');
 
 

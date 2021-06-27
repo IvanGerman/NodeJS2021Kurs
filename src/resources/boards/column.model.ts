@@ -1,4 +1,4 @@
-//const { v4: uuidv4 } = require('uuid');
+// const { v4: uuidv4 } = require('uuid');
 import { IBoard } from "./board.model";
 
 export interface IColumn {
@@ -27,4 +27,4 @@ export interface IColumn {
 //     }
 // };
   
-//module.exports = Column;
+// module.exports = Column;

@@ -38,9 +38,7 @@ const getUserById = async (id) => {
  * @returns {user} user - returns Promise of a new created user
  */
 const createNewUser = async (dto) => {
-    console.log("dto: ", dto);
     const passwordHash = bcrypt.hashSync(dto.password, 10);
-    console.log('passhash: ', passwordHash);
     dto.password = passwordHash;
     const userRepository = typeorm_1.getRepository(User_1.User);
     const newUser = userRepository.create(dto);

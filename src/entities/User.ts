@@ -13,7 +13,7 @@ export class User {
     @Column('varchar', { length: 64, default: 'user1' })
     login: string = '';
 
-    @Column('varchar', { length: 64, default: 'password123', select: false })
+    @Column('varchar', { length: 128, default: 'password123' })
     password: string;
 }
 
