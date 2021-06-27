@@ -2,6 +2,8 @@
 import { getRepository } from 'typeorm';
 import { User } from '../../entities/User';  
 import { UserDTO } from './user.model';
+const bcrypt = require('bcrypt');
+
 
 // const Users: Array<IUser> = require('./user.dataBase');
 
@@ -44,6 +46,10 @@ const getUserById = async (id: string): Promise<User | undefined> => {
  * @returns {user} user - returns Promise of a new created user
  */
 const createNewUser = async (dto: UserDTO): Promise<User>  => { 
+
+  const passwordHash = bcrypt.hashSync(dto.password, 10);
+  dto.password = passwordHash;
+
   const userRepository = getRepository(User);
   const newUser = userRepository.create(dto);
   const savedUser = userRepository.save(newUser);  
