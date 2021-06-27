@@ -6,85 +6,69 @@ const User = require('./user.model');
 const usersService = require('./user.service');
 
 
-router.route('/').get(async (_req: Request, res: Response) => {
+router.route('/').get(async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
 
-  const users: Array<IUser> = await usersService.getAll();
- 
-  if (!users) {
-    return res.status(401).json( {message: 'Error, Users not found'} );
+  try {
+    const users: Array<IUser> = await usersService.getAll();  
+    res.status(200).json(users.map(User.toResponse));
+  } catch (err) { 
+    next(err);
   };
-  
-  return res.status(200).json(users.map(User.toResponse));
 });
 
 
 
-router.route('/:id').get(async (req: Request, res: Response, next: NextFunction) => {
+router.route('/:id').get(async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
   const { id } = req.params;
 
   try {
-    const user: IUser = await usersService.getUserById(id);
+    const user: IUser = await usersService.getUserById(id);  
     res.status(200).json(User.toResponse(user));
   } catch (err) { 
-  
     next(err);
   };
-
-  // const user: IUser = await usersService.getUserById(id);
-
-  // if (!user) {
-  //   return res.status(404).json( {message: 'Error, User not found'} );
-  // };
-  
-  // return res.status(200).json(User.toResponse(user));
 });
 
 
 
-router.route('/').post( async (req: Request, res: Response) => {
+router.route('/').post( async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   
-  const user: IUser = await usersService.createNewUser(
-     new User({...req.body }));
-
-  if (!user) {
-    return res.status(400).json( {message: 'Error, new User was not created'} );
+  try {
+    const user: IUser = await usersService.createNewUser(req.body);
+    res.status(201).json(User.toResponse(user));
+  } catch (err) { 
+    next(err);
   };
-    
-  return res.status(201).json(User.toResponse(user));
 });
 
 
 
-router.route('/:id').put(async (req: Request, res: Response) => {
+router.route('/:id').put(async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
   const { id } = req.params;
-  const newUserData: IUser = req.body;
-  const user: IUser = await usersService.updateUser(id, newUserData);
   
-
-  if (!user) {
-    return res.status(400).json( {message: 'Error, User could not be updated'} );
-  };
-    
-  return res.status(200).json(User.toResponse(user));
+  try {
+    const user: IUser = await usersService.updateUser(id, req.body);  
+    res.status(200).json(User.toResponse(user));
+  } catch (err) { 
+    next(err);
+  }; 
 });
 
 
 
-router.route('/:id').delete(async (req: Request, res: Response) => {
+router.route('/:id').delete(async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
   const { id } = req.params;
-  const user: IUser = await usersService.deleteUser(id);
   
-  if (!user) { 
-     return res.status(404).json( {message: 'Error, User could not be deleted'} );
-  };
-    
-  return res.status(204).json(`User ${user} successfully deleted`);
+  try {
+    const user: IUser = await usersService.deleteUser(id);  
+    res.status(204).json(`User ${user} successfully deleted`);
+  } catch (err) { 
+    next(err);
+  }; 
 });
-
-
 
 module.exports = router;
 

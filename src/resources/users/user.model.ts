@@ -7,6 +7,8 @@ export interface IUser {
   password: string;
 };
 
+export type UserDTO = Omit<IUser, 'id'>;
+
 class User {
 
   id: string;

@@ -19,7 +19,9 @@ const updateTask = (boardId: string, taskId: string, newTaskData: ITask) => task
 
 const deleteTask = (boardId: string, taskId: string) => tasksRepo.deleteTask(boardId, taskId);// return avtomatom
 
-const unassignUser = (id: string) => tasksRepo.unassignUser(id);
+const unassignUser = async(id: string): Promise<void> => {
+  await tasksRepo.unassignUser(id);
+};
 
 const deleteAllTasksByBoardId = (boardId: string) => tasksRepo.deleteAllTasksByBoardId(boardId);
 

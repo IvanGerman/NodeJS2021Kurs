@@ -91,7 +91,7 @@ const deleteTask = async (_boardId: string, taskId: string) => {
  * @param {string} id - id of the deleted user
  * @returns {void} 
  */
-const unassignUser = async (id: string) => {
+const unassignUser = async (id: string): Promise<void> => {
 
   Tasks.forEach((task: ITask, index: number) => {
     
