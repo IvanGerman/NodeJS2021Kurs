@@ -1,13 +1,12 @@
 "use strict";
-// @ts-nocheck
-//import { getRepository } from 'typeorm';
-//import { User } from '../../entities/User';
 Object.defineProperty(exports, "__esModule", { value: true });
+// @ts-nocheck
 const bcrypt = require('bcrypt');
 const { sign } = require('jsonwebtoken');
 const loginRepo = require('./login.repository');
+const { JWTsecret } = require('./../../common/config');
 const createJWTtoken = (user) => {
-    const accessToken = sign({ login: user.login, id: user.id }, "jwtsecret", { expiresIn: 60 * 60 * 24 });
+    const accessToken = sign({ login: user.login, id: user.id }, JWTsecret, { expiresIn: 60 * 60 * 24 });
     return accessToken;
 };
 const createNewToken = async (userData) => {
@@ -29,13 +28,5 @@ const createNewToken = async (userData) => {
         return null;
     }
     ;
-    // bcrypt.compare(password, passwordHash).then((match) => {
-    //   if(!match) { 
-    //     return null;
-    //   } else {
-    //     const accessToken = createJWTtoken(user); console.log( accessToken );
-    //     return accessToken;
-    //   }
-    // }) 
 };
 module.exports = { createNewToken };

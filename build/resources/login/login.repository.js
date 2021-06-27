@@ -1,6 +1,6 @@
 "use strict";
-// @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
+// @ts-nocheck
 const typeorm_1 = require("typeorm");
 const User_1 = require("../../entities/User");
 const getUser = async (login) => {
