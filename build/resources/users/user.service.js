@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const usersRepo = require('./user.memory.repository');
 const tasksService = require('../tasks/task.service');
+const usersRepo = require('./user.memory.repository');
+// const tasksService = require('../tasks/task.service');
 const getAll = async () => {
     const users = await usersRepo.getAll();
     if (users === undefined)

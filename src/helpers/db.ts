@@ -1,5 +1,6 @@
-import { config } from "../common/ormconfig";
+import 'reflect-metadata';
 import { getConnection, createConnection } from "typeorm"; 
+import { config } from "../common/ormconfig";
 
 const connectToDB = async() => {
     let connection;

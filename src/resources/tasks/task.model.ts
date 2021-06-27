@@ -8,7 +8,10 @@ export interface ITask {
   boardId: string | undefined;
   columnId: string;
   description: string;
-}
+};
+
+export type TaskDTO = Omit<ITask, 'id'>;
+
 
 class Task implements ITask {
 

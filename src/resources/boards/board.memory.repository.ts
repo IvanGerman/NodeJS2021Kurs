@@ -1,6 +1,7 @@
-import { IBoard } from './board.model';
+import { getRepository } from 'typeorm';
+import { BoardEntity } from '../../entities/Board'; 
+import { IBoard, BoardDTO } from './board.model';
 
-const Boards = require('./board.dataBase');
 
 /** 
  * @typedef  column
@@ -22,10 +23,12 @@ const Boards = require('./board.dataBase');
  * This function returns a list of all boards
  * @returns {Array.<board>} Boards - returns an array of all boards
  */
-const getAll = async (): Promise<Array<IBoard>> => Boards;
+const getAll = async (): Promise<Array<BoardEntity> | undefined> => { 
 
+  const boardRepository = getRepository(BoardEntity);
+  return boardRepository.find() ;
 
-
+};
 
 
 /**
@@ -33,7 +36,14 @@ const getAll = async (): Promise<Array<IBoard>> => Boards;
  * @param {string} id - id of a board
  * @returns {board} board - returns Object of a board
  */
-const getBoardById = async (id: string): Promise<IBoard | undefined> => Boards.find( (board: IBoard): boolean => board.id === id );
+
+const getBoardById = async (id: string): Promise<IBoard | undefined> => {
+  const boardRepository = getRepository(BoardEntity);
+  const res = await boardRepository.findOne(id);
+  if (res === undefined) return undefined;
+  // @ts-ignore
+  return res;
+};
 
 
 /**
@@ -41,10 +51,11 @@ const getBoardById = async (id: string): Promise<IBoard | undefined> => Boards.f
  * @param {board} board - board who should be created
  * @returns {board} board - returns new created board
  */
-const createNewBoard = async (board: IBoard) => {
-  Boards.push(board);
-  return board;
-  
+const createNewBoard = async (dto: BoardDTO) => {
+  const boardRepository = getRepository(BoardEntity);
+  const newBoard = boardRepository.create(dto);
+  const savedBoard = boardRepository.save(newBoard);
+  return savedBoard;   
 };
 
 
@@ -55,16 +66,17 @@ const createNewBoard = async (board: IBoard) => {
  * @returns {board|null} updatedBoard - returns the updated object of a board or null if the board was not
  * found
  */
-const updateBoard = async (boardId: string, newBoardData: IBoard) => {
 
-  const index: number = Boards.findIndex( (board: IBoard): boolean => board.id === boardId);
-
-  if (index === -1) return null;
-
-  const updatedBoard: IBoard = {...Boards[index], ...newBoardData, boardId };
-  Boards[index] = updatedBoard;
+const updateBoard = async (id: string, dto: Partial<BoardDTO>): Promise<BoardEntity | null> => {
+  
+  const boardRepository = getRepository(BoardEntity);
+  const updatingBoard = await boardRepository.findOne(id);
+  if (!updatingBoard) { return null};
+  boardRepository.merge(updatingBoard, dto);
+  const updatedBoard = await getRepository(BoardEntity).save(updatingBoard);
   return updatedBoard;
 };
+
 
 
 /**
@@ -72,15 +84,15 @@ const updateBoard = async (boardId: string, newBoardData: IBoard) => {
  * @param {string} boardId  - boardId of an board
  * @returns {board|null} board - returns deleted board or null if the board was not found
  */
-const deleteBoardById = async (boardId: string) => {
-  
-  const index = Boards.findIndex( (board: IBoard): boolean => board.id === boardId);
 
-  if (index === -1) return null;
-  
-  return Boards.splice(index, 1);
+const deleteBoardById = async (id: string): Promise<BoardEntity | null> => { 
+// all boards tasks are deleted together with the board automatically
+  const boardRepository = getRepository(BoardEntity);
+  const deletingBoard = await boardRepository.findOne(id);
+  if (deletingBoard === undefined) return null; 
+  await boardRepository.remove(deletingBoard); 
+  return deletingBoard;
 };
-
 
 
 module.exports = { getAll, getBoardById, createNewBoard, updateBoard, deleteBoardById };

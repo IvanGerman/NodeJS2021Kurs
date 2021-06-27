@@ -1,8 +1,9 @@
-import { IUser } from './user.model';
-import { UserDTO } from './user.model';
+import { IUser , UserDTO } from './user.model';
+
+const tasksService = require('../tasks/task.service')
 
 const usersRepo = require('./user.memory.repository');
-const tasksService = require('../tasks/task.service');
+// const tasksService = require('../tasks/task.service');
 
 const getAll = async(): Promise<Array<IUser>> => {
   const users: Array<IUser> = await usersRepo.getAll();
@@ -31,6 +32,7 @@ const updateUser = async(id: string, dto: UserDTO): Promise<IUser> => {
 const deleteUser = async(id: string): Promise<IUser> => {
     await tasksService.unassignUser(id);
     const deletedUser: IUser = await usersRepo.deleteUser(id);
+    
     if (deletedUser === null) throw new Error('User was not deleted');
     return deletedUser;
 };

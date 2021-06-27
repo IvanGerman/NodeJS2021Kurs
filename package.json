@@ -62,7 +62,8 @@
     "table": "^6.7.1",
     "typeorm": "^0.2.34",
     "uuid": "8.3.2",
-    "yamljs": "0.3.0"
+    "yamljs": "0.3.0",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@types/express": "^4.17.12",

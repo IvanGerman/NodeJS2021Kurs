@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { ITask } from './task.model';
 
 const router = require('express').Router({mergeParams: true});
@@ -8,77 +8,84 @@ const tasksService = require('./task.service');
 
 
 
-router.route('/').get(async (_req: Request, res: Response) => {
+router.route('/').get(async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
 
   const { boardId } = _req.params;
-  const tasks: Array<ITask> = await tasksService.getTasksByBoardId(boardId);
   
-  if (!tasks) {
-    return res.status(401).json( {message: 'Error, Tasks not found'} );
-  };
-  
-  return res.status(200).json(tasks); 
+  try {
+    const tasks: Array<ITask> = await tasksService.getTasksByBoardId(boardId);
+    res.status(200).json(tasks);
+  } catch (err) { 
+    next(err);
+  }; 
 });
 
 
 
-router.route('/:taskId').get(async (req: Request, res: Response) => {
+
+
+router.route('/:taskId').get(async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
   const { boardId, taskId } = req.params;
-  const task: ITask = await tasksService.getTaskByBoardAndTaskId(boardId, taskId);
-  
-  if (!task) {
-    return res.status(404).json( {message: 'Error, Task not found'} );
+
+  try {
+    const task: ITask = await tasksService.getTaskByBoardAndTaskId(boardId, taskId);
+    res.status(200).json(task);
+  } catch (err) { 
+    next(err);
   };
-  
-  return res.status(200).json(task);
 });
 
 
 
-router.route('/').post(async (req: Request, res: Response) => {
 
-  const { boardId } = req.params;
-  const task: ITask = await tasksService.createNewTask(new Task({
-    ...req.body,
-    boardId
-  }));
 
-  if (!task) {
-    return res.status(400).json( {message: 'Error, new Task was not created'} );
+
+router.route('/').post( async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  
+  try {
+    const { boardId } = req.params;
+    const task: ITask = await tasksService.createNewTask(new Task({
+      ...req.body,
+      boardId
+    }));
+    res.status(201).json(task);
+  } catch (err) { 
+    next(err);
   };
-    
-  return res.status(201).json(task);
 });
 
 
-
-router.route('/:taskId').put(async (req: Request, res: Response) => {
+router.route('/:taskId').put(async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
   const {boardId, taskId} = req.params;
-  const newTaskData: ITask = req.body;
-  const task: ITask = await tasksService.updateTask(boardId, taskId, newTaskData);
 
-  if (!task) {
-    return res.status(400).json( {message: 'Error, Task could not be updated'} );
-  };
-    
-  return res.status(200).json(task);
+  try {
+    const task: ITask = await tasksService.updateTask(boardId, taskId, req.body);  
+    res.status(200).json(task);
+  } catch (err) { 
+    next(err);
+  }; 
 });
 
 
 
-router.route('/:taskId').delete(async (req: Request, res: Response) => {
+
+
+
+router.route('/:taskId').delete(async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
   const {boardId, taskId} = req.params;
-  const task: ITask = await tasksService.deleteTask(boardId, taskId);
-  
-  if (!task) { 
-    return res.status(404).json( {message: 'Error, Task could not be deleted'} );
-  };
-  
-  return res.status(204).json('Task successfully deleted');
+
+  try {
+    const task: ITask = await tasksService.deleteTask(boardId, taskId);  
+    
+    res.status(204).json(task);
+  } catch (err) { 
+    next(err);
+  }; 
 });
+
 
 
 

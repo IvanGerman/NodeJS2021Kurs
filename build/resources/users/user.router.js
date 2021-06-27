@@ -49,7 +49,7 @@ router.route('/:id').delete(async (req, res, next) => {
     const { id } = req.params;
     try {
         const user = await usersService.deleteUser(id);
-        res.status(204).json(`User ${user} successfully deleted`);
+        res.status(204).json(User.toResponse(user));
     }
     catch (err) {
         next(err);

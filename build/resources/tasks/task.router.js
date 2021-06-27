@@ -3,53 +3,62 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const router = require('express').Router({ mergeParams: true });
 const Task = require('./task.model');
 const tasksService = require('./task.service');
-router.route('/').get(async (_req, res) => {
+router.route('/').get(async (_req, res, next) => {
     const { boardId } = _req.params;
-    const tasks = await tasksService.getTasksByBoardId(boardId);
-    if (!tasks) {
-        return res.status(401).json({ message: 'Error, Tasks not found' });
+    try {
+        const tasks = await tasksService.getTasksByBoardId(boardId);
+        res.status(200).json(tasks);
+    }
+    catch (err) {
+        next(err);
     }
     ;
-    return res.status(200).json(tasks);
 });
-router.route('/:taskId').get(async (req, res) => {
+router.route('/:taskId').get(async (req, res, next) => {
     const { boardId, taskId } = req.params;
-    const task = await tasksService.getTaskByBoardAndTaskId(boardId, taskId);
-    if (!task) {
-        return res.status(404).json({ message: 'Error, Task not found' });
+    try {
+        const task = await tasksService.getTaskByBoardAndTaskId(boardId, taskId);
+        res.status(200).json(task);
+    }
+    catch (err) {
+        next(err);
     }
     ;
-    return res.status(200).json(task);
 });
-router.route('/').post(async (req, res) => {
-    const { boardId } = req.params;
-    const task = await tasksService.createNewTask(new Task({
-        ...req.body,
-        boardId
-    }));
-    if (!task) {
-        return res.status(400).json({ message: 'Error, new Task was not created' });
+router.route('/').post(async (req, res, next) => {
+    try {
+        const { boardId } = req.params;
+        const task = await tasksService.createNewTask(new Task({
+            ...req.body,
+            boardId
+        }));
+        res.status(201).json(task);
+    }
+    catch (err) {
+        next(err);
     }
     ;
-    return res.status(201).json(task);
 });
-router.route('/:taskId').put(async (req, res) => {
+router.route('/:taskId').put(async (req, res, next) => {
     const { boardId, taskId } = req.params;
-    const newTaskData = req.body;
-    const task = await tasksService.updateTask(boardId, taskId, newTaskData);
-    if (!task) {
-        return res.status(400).json({ message: 'Error, Task could not be updated' });
+    try {
+        const task = await tasksService.updateTask(boardId, taskId, req.body);
+        res.status(200).json(task);
+    }
+    catch (err) {
+        next(err);
     }
     ;
-    return res.status(200).json(task);
 });
-router.route('/:taskId').delete(async (req, res) => {
+router.route('/:taskId').delete(async (req, res, next) => {
     const { boardId, taskId } = req.params;
-    const task = await tasksService.deleteTask(boardId, taskId);
-    if (!task) {
-        return res.status(404).json({ message: 'Error, Task could not be deleted' });
+    try {
+        const task = await tasksService.deleteTask(boardId, taskId);
+        res.status(204).json(task);
+    }
+    catch (err) {
+        next(err);
     }
     ;
-    return res.status(204).json('Task successfully deleted');
 });
 module.exports = router;

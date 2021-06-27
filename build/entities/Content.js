@@ -9,32 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.Content = void 0;
 const typeorm_1 = require("typeorm");
-// import {v4 as uuid} from 'uuid';
-let User = class User {
-    constructor() {
-        this.name = '';
-        this.login = '';
-    }
-};
+class Content {
+}
 __decorate([
     typeorm_1.PrimaryGeneratedColumn('uuid'),
     __metadata("design:type", String)
-], User.prototype, "id", void 0);
+], Content.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column('varchar', { length: 64, default: 'USER1' }),
+    typeorm_1.Column({
+        length: 50,
+        default: 'Title'
+    }),
     __metadata("design:type", String)
-], User.prototype, "name", void 0);
-__decorate([
-    typeorm_1.Column('varchar', { length: 64, default: 'user1' }),
-    __metadata("design:type", String)
-], User.prototype, "login", void 0);
-__decorate([
-    typeorm_1.Column('varchar', { length: 64, default: 'password123', select: false }),
-    __metadata("design:type", String)
-], User.prototype, "password", void 0);
-User = __decorate([
-    typeorm_1.Entity({ name: 'users' })
-], User);
-exports.User = User;
+], Content.prototype, "title", void 0);
+exports.Content = Content;

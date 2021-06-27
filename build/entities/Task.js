@@ -9,32 +9,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.TaskEntity = void 0;
 const typeorm_1 = require("typeorm");
 // import {v4 as uuid} from 'uuid';
-let User = class User {
-    constructor() {
-        this.name = '';
-        this.login = '';
-    }
+let TaskEntity = class TaskEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn('uuid'),
     __metadata("design:type", String)
-], User.prototype, "id", void 0);
+], TaskEntity.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column('varchar', { length: 64, default: 'USER1' }),
+    typeorm_1.Column('varchar', { length: 64, default: '' }),
     __metadata("design:type", String)
-], User.prototype, "name", void 0);
+], TaskEntity.prototype, "title", void 0);
 __decorate([
-    typeorm_1.Column('varchar', { length: 64, default: 'user1' }),
-    __metadata("design:type", String)
-], User.prototype, "login", void 0);
+    typeorm_1.Column('integer', { default: 0 }),
+    __metadata("design:type", Number)
+], TaskEntity.prototype, "order", void 0);
 __decorate([
-    typeorm_1.Column('varchar', { length: 64, default: 'password123', select: false }),
+    typeorm_1.Column('varchar', { length: 64, default: '' }),
     __metadata("design:type", String)
-], User.prototype, "password", void 0);
-User = __decorate([
-    typeorm_1.Entity({ name: 'users' })
-], User);
-exports.User = User;
+], TaskEntity.prototype, "description", void 0);
+__decorate([
+    typeorm_1.Column('varchar', { length: 64, default: null, nullable: true }),
+    __metadata("design:type", Object)
+], TaskEntity.prototype, "userId", void 0);
+__decorate([
+    typeorm_1.Column('varchar', { length: 64, default: null, nullable: true }),
+    __metadata("design:type", Object)
+], TaskEntity.prototype, "boardId", void 0);
+__decorate([
+    typeorm_1.Column('varchar', { length: 64, default: null, nullable: true }),
+    __metadata("design:type", Object)
+], TaskEntity.prototype, "columnId", void 0);
+TaskEntity = __decorate([
+    typeorm_1.Entity({ name: 'tasks' })
+], TaskEntity);
+exports.TaskEntity = TaskEntity;

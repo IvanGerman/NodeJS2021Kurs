@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-//import { IUser } from './user.model';
+// import { IUser } from './user.model';
 const typeorm_1 = require("typeorm");
 const User_1 = require("../../entities/User");
-//const Users: Array<IUser> = require('./user.dataBase');
+// const Users: Array<IUser> = require('./user.dataBase');
 /**
  * @typedef user
  * @type {Object}
@@ -17,7 +17,7 @@ const User_1 = require("../../entities/User");
  */
 const getAll = async () => {
     const userRepository = typeorm_1.getRepository(User_1.User);
-    return userRepository.find({ where: {} });
+    return userRepository.find();
 };
 /**
  * This function finds and returns an user by his id
@@ -53,8 +53,10 @@ const updateUser = async (id, dto) => {
     const res = await userRepository.findOne(id);
     if (res === undefined)
         return null;
-    const updateRes = await userRepository.update(id, dto);
-    return updateRes.raw;
+    await userRepository.update(id, dto);
+    const updatedUser = await userRepository.findOne(id);
+    // @ts-ignore
+    return updatedUser;
 };
 /**
  * This function deletes an user by his id
@@ -64,11 +66,9 @@ const updateUser = async (id, dto) => {
 const deleteUser = async (id) => {
     const userRepository = typeorm_1.getRepository(User_1.User);
     const res = await userRepository.findOne(id);
-    const deletionRes = await userRepository.delete(id);
     if (res === undefined)
         return null;
-    if (deletionRes.affected)
-        return res;
-    return null;
+    await userRepository.delete(id);
+    return res;
 };
 module.exports = { getAll, getUserById, createNewUser, updateUser, deleteUser };
