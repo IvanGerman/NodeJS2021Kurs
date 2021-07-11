@@ -59,7 +59,7 @@ npm run test:auth <suite name>
 
 If you're using VSCode, you can get a better developer experience from integration with [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extensions.
 
-### Auto-fix and format
+## Auto-fix and format
 
 ```
 npm run lint
